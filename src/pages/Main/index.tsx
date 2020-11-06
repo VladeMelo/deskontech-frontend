@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FiShoppingCart, FiMenu } from 'react-icons/fi';
 
@@ -18,7 +18,7 @@ const Main = () => {
     history.push('/sec', {
       section: category
     });
-  }, []);
+  }, [history]);
 
   return (
     <>
@@ -37,7 +37,7 @@ const Main = () => {
           </MenuSection>
 
           <Logo>
-            <img src='https://fontmeme.com/permalink/200916/057fb400e47981463e503cff3d4a5ca7.png' />
+            <img src='https://fontmeme.com/permalink/200916/057fb400e47981463e503cff3d4a5ca7.png' alt='Logo' />
           </Logo>
 
           <LoginSignUpSection>

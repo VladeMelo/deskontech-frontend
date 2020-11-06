@@ -77,7 +77,7 @@ const Secondary = () => {
     history.push('/sec', {
       section: category
     });
-  }, []);
+  }, [history]);
 
   const handleSelectingFilter = (filterSelected: string) => {
     const findSelected = selectedToFilter.findIndex(selected => selected === filterSelected);
@@ -115,7 +115,7 @@ const Secondary = () => {
           <Logo
             onClick={() => history.push('/')}
           >
-            <img src='https://fontmeme.com/permalink/200916/057fb400e47981463e503cff3d4a5ca7.png' />
+            <img src='https://fontmeme.com/permalink/200916/057fb400e47981463e503cff3d4a5ca7.png' alt='Logo' />
           </Logo>
 
           <LoginSignUpSection>
