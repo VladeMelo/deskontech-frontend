@@ -10,7 +10,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         <Route path='/' exact component={Main} />
-        <Route path='/sec' component={Secondary} />
+        <Route path='/products' component={Secondary} />
       </Switch>
     </BrowserRouter>
   </React.StrictMode>,
