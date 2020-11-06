@@ -2,23 +2,45 @@ import React, { useState, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FiShoppingCart, FiMenu } from 'react-icons/fi';
 
+import topTrendingProducts from '../../data/topTrendingProducts';
+import categories from '../../data/categories';
+
 import { Container, FreeShipping, LogoSection, MenuSection, Logo, LoginSignUpSection, CategoriesSection, Category, ImageSection, TopTrending, TopTrendingProduct, Photo, ViewProduct, TopTrendingSection } from './styles';
 
+import Modal from '../../components/Modal'
+
 import backgroundImg from '../../assets/background.jpg';
-import productImg from '../../assets/galaxy-note20.png';
 
 import GlobalStyles from '../../styles/global'
+
+interface ProductProps {
+  name: string;
+  image: string;
+  description: string;
+  price: number;
+}
 
 const Main = () => {
   const history = useHistory();
 
   const [openMenu, setOpenMenu] = useState(false);
+  const [productSelected, setProductSelected] = useState<ProductProps>({} as ProductProps);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleSelectingSection = useCallback((category) => {
-    history.push('/sec', {
+    history.push('/products', {
       section: category
     });
   }, [history]);
+
+  const turnModalOn = (product: ProductProps) => {
+    setModalOpen(true);
+    setProductSelected(product);
+  }
+
+  const turnModalOff = () => {
+    setModalOpen(false);
+  }
 
   return (
     <>
@@ -53,8 +75,7 @@ const Main = () => {
 
         <CategoriesSection>
           {
-            ['Gadgets', 'Audio & Video', 'Smart Devices', 'Camera & Photo', 'Games']
-            .map(category => (
+            categories.map(category => (
               <Category
                 onClick={
                   () => handleSelectingSection(category)
@@ -74,48 +95,28 @@ const Main = () => {
         </TopTrending>
 
         <TopTrendingSection>
-          <TopTrendingProduct>
-            <Photo>
-              <img src={productImg} alt='product' />
-            </Photo>
-            <h1>Brooks Men's Ghost 13 - Brown</h1>
-            <h2>$42.99</h2>
-            <ViewProduct>
-              <h3>View Product</h3>
-            </ViewProduct>
-          </TopTrendingProduct>
-          <TopTrendingProduct>
-            <Photo>
-              <img src={productImg} alt='product' />
-            </Photo>
-            <h1>Brooks Men's Ghost 13 - Brown</h1>
-            <h2>$42.99</h2>
-            <ViewProduct>
-              <h3>View Product</h3>
-            </ViewProduct>
-          </TopTrendingProduct>
-          <TopTrendingProduct>
-            <Photo>
-              <img src={productImg} alt='product' />
-            </Photo>
-            <h1>Brooks Men's Ghost 13 - Brown</h1>
-            <h2>$42.99</h2>
-            <ViewProduct>
-              <h3>View Product</h3>
-            </ViewProduct>
-          </TopTrendingProduct>
-          <TopTrendingProduct>
-            <Photo>
-              <img src={productImg} alt='product' />
-            </Photo>
-            <h1>Brooks Men's Ghost 13 - Brown</h1>
-            <h2>$42.99</h2>
-            <ViewProduct>
-              <h3>View Product</h3>
-            </ViewProduct>
-          </TopTrendingProduct>
+          {topTrendingProducts.map(product => (
+            <TopTrendingProduct>
+              <Photo>
+                <img src={product.image} alt='product' />
+              </Photo>
+              <h1>{product.name}</h1>
+              <h2>${product.price}</h2>
+              <ViewProduct
+                onClick = {() => turnModalOn(product)}
+              >
+                <h3>View Product</h3>
+              </ViewProduct>
+            </TopTrendingProduct>
+          ))}
         </TopTrendingSection>
       </Container>
+      {modalOpen &&
+        <Modal
+          {...productSelected}
+          turnModalOff={turnModalOff}
+        />
+      }
     </>
   )
 }

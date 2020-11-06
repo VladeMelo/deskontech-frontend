@@ -3,14 +3,13 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { FiShoppingCart, FiMenu, FiCheck } from 'react-icons/fi';
 import { Form } from '@unform/web';
 
+import products from '../../data/products';
+import categories from '../../data/categories';
+
 import { Container, FreeShipping, LogoSection, MenuSection, Logo, LoginSignUpSection, CategoriesSection, Category, FilterAndProductSection, FilterSection, PriceSection, DiscountSection, Discount, HeaderProductSection, ProductSection, Product, Photo, ViewProduct } from './styles';
 
 import Input from '../../components/Input'
 import Modal from '../../components/Modal'
-
-import iphone8Img from '../../assets/iphone8.png';
-import galaxyNote20Img from '../../assets/galaxy-note20.png';
-import samsungGalaxyGearFitSmartWatch from '../../assets/samsung-galaxy-gear-fit-smart-watch.png';
 
 import GlobalStyles from '../../styles/global'
 
@@ -25,56 +24,17 @@ interface ProductProps {
   price: number;
 }
 
-const productsInfo = [
-  {
-    name: `Brooks Men's Ghost 13 - Brown`, 
-    image: iphone8Img,
-    description: `There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.`,
-    price: 42.99
-  },
-  {
-    name: `Brooks Men's Ghost 13 - Brown`, 
-    image: galaxyNote20Img,
-    description: `There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.`,
-    price: 42.99
-  },
-  {
-    name: `Brooks Men's Ghost 13 - Brown`, 
-    image: samsungGalaxyGearFitSmartWatch,
-    description: `There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.`,
-    price: 42.99
-  },
-  {
-    name: `Brooks Men's Ghost 13 - Brown`, 
-    image: galaxyNote20Img,
-    description: `There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.`,
-    price: 42.99
-  },
-  {
-    name: `Brooks Men's Ghost 13 - Brown`, 
-    image: iphone8Img,
-    description: `There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.`,
-    price: 42.99
-  },
-  {
-    name: `Brooks Men's Ghost 13 - Brown`, 
-    image: samsungGalaxyGearFitSmartWatch,
-    description: `There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.`,
-    price: 42.99
-  }
-] 
-
 const Secondary = () => {
   const history = useHistory();
   const location = useLocation<LocationProps>();
   const { section } = location.state;
 
   const [selectedToFilter, setSelectedToFilter] = useState<string[]>([]);
-  const [productSelected, setProductSelected] = useState<ProductProps>({} as ProductProps)
-  const [modalOpen, setModalOpen] = useState(false)
+  const [productSelected, setProductSelected] = useState<ProductProps>({} as ProductProps);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleSelectingSection = useCallback((category) => {
-    history.push('/sec', {
+    history.push('/products', {
       section: category
     });
   }, [history]);
@@ -131,8 +91,7 @@ const Secondary = () => {
 
         <CategoriesSection>
           {
-            ['Gadgets', 'Audio & Video', 'Smart Devices', 'Camera & Photo', 'Games']
-            .map(category => (
+            categories.map(category => (
               <Category
                 onClick={
                   () => handleSelectingSection(category)
@@ -212,7 +171,7 @@ const Secondary = () => {
             </HeaderProductSection>
 
             <ProductSection>
-              {productsInfo.map(product => (
+              {products.map(product => (
                 <Product>
                   <Photo>
                     <img src={product.image} alt='product' />
