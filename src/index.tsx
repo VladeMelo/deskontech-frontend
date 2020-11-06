@@ -4,7 +4,6 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Main from './pages/Main';
 import Secondary from './pages/Secondary';
-import Product from './pages/Product';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,7 +11,6 @@ ReactDOM.render(
       <Switch>
         <Route path='/' exact component={Main} />
         <Route path='/sec' component={Secondary} />
-        <Route path='/prod' component={Product} />
       </Switch>
     </BrowserRouter>
   </React.StrictMode>,

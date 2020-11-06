@@ -134,21 +134,23 @@ export const LoginSignUpSection = styled.div`
   justify-content: flex-end;
 
   h1 {
-    font-size: 20px;
+    font-size: 18px;
     color: #415e97;
     font-family: Poppins;
+    padding: 2px;
+    border: 2px solid #415e97;
 
     cursor: pointer;
+    transition: 0.2s;
 
-    & + h1 {
-      margin-left: 5px;
+    &+h1 {
+      margin-left: 16px;
+      color: #f9f9f9;
+      background: #415e97;
+    }
 
-      &:before {
-        content:'/';
-        font-size: 20px;
-        color: #415e97;
-        margin-right: 5px;
-      }
+    &:hover {
+      transform: translateY(-2px);
     }
   }
 

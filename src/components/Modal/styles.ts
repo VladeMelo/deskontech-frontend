@@ -40,8 +40,12 @@ export const ModalContainer = styled.div`
 `
 
 export const Image = styled.div`
-  max-height: 220px;
+  max-height: 180px;
   margin-right: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   img {
     display: block;
@@ -53,6 +57,7 @@ export const Image = styled.div`
 export const Information = styled.div`
   display: flex;
   flex-direction: column;
+  margin-right: 20px; 
 
   h1 {
     font-size: 28px;

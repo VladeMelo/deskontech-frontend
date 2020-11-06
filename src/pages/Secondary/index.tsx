@@ -81,7 +81,7 @@ const Secondary = () => {
   })
 
   const handleSelectingSection = useCallback((category) => {
-    history.push('/prod', {
+    history.push('/sec', {
       section: category
     });
   }, []);
