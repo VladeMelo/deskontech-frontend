@@ -1,9 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
 
-interface ImageSectionProps {
-  imgUrl: string;
-}
-
 interface CategoriesProps {
   selected?: boolean;
 }

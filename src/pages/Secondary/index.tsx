@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import AOS from 'aos';
 import { FiShoppingCart, FiMenu, FiCheck } from 'react-icons/fi';
 import { Form } from '@unform/web';
 
@@ -73,12 +72,6 @@ const Secondary = () => {
   const [selectedToFilter, setSelectedToFilter] = useState<string[]>([]);
   const [productSelected, setProductSelected] = useState<ProductProps>({} as ProductProps)
   const [modalOpen, setModalOpen] = useState(false)
-
-  useEffect(() => {
-    AOS.init({
-      duration: 1000
-    })
-  })
 
   const handleSelectingSection = useCallback((category) => {
     history.push('/sec', {

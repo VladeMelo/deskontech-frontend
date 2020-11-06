@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import AOS from 'aos';
 import { FiShoppingCart, FiMenu } from 'react-icons/fi';
 
 import { Container, FreeShipping, LogoSection, MenuSection, Logo, LoginSignUpSection, CategoriesSection, Category, ImageSection, TopTrending, TopTrendingProduct, Photo, ViewProduct, TopTrendingSection } from './styles';
@@ -14,12 +13,6 @@ const Main = () => {
   const history = useHistory();
 
   const [openMenu, setOpenMenu] = useState(false);
-
-  useEffect(() => {
-    AOS.init({
-      duration: 1000
-    })
-  })
 
   const handleSelectingSection = useCallback((category) => {
     history.push('/sec', {
