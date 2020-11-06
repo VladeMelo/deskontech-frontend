@@ -24,7 +24,7 @@ export const ModalContainer = styled.div`
 
   position: relative;
 
-  svg {
+  > svg {
     position: absolute;
     right: 10px;
     top: 10px;
@@ -82,8 +82,49 @@ export const Information = styled.div`
   }
 `
 
+export const ProductQuantity = styled.div`
+  display: flex;
+  margin-top: 10px;
+`
+export const Quantity = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  background: #111111;
+
+  h1 {
+    font-size: 12px;
+    color: #c9c9c9;
+  }
+`
+export const SubtractQuantity = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #415e97;
+  cursor: pointer;
+
+  svg {
+    color: #c9c9c9;
+    font-size: 16px;
+  }
+`
+export const AddQuantity = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #415e97;
+  cursor: pointer;
+
+  svg {
+    color: #c9c9c9;
+    font-size: 16px;
+  }
+`
+
 export const AddProductButton = styled.div`
-  margin-top: 20px;
+  margin-top: 16px;
   padding: 5px;
   width: 130px;
   display: flex;
